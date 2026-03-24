@@ -1,6 +1,6 @@
 # Claude Proj Blueprint
 
-A modular, level-based project template for teams building software with **Claude Code**, **Obsidian**, and **Figma**.
+A modular, level-based project template for teams building software with **Claude Code**, **Obsidian**, and **Figma Make**.
 
 Pick your maturity level. Plug in your specs. Ship.
 
