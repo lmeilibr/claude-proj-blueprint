@@ -1,6 +1,6 @@
 # Claude Proj Blueprint
 
-A modular, level-based project template for teams building software with **Claude Code**, **Obsidian**, and **Figma Make**.
+A modular, level-based project template for teams building software with **Claude Code**, **Obsidian**, and **Figma**.
 
 Pick your maturity level. Plug in your specs. Ship.
 
@@ -11,7 +11,7 @@ Pick your maturity level. Plug in your specs. Ship.
 Every team reinvents project structure from scratch. This blueprint gives you an opinionated skeleton that scales from solo MVP to autonomous multi-agent systems — without locking you into a specific stack.
 
 ```
-Level 1 → You and Claude Code on a weekend project
+Level 1 → You and Claude as copilot on a weekend project
 Level 4 → Agent teams with self-healing CI and compliance auditors
 ```
 
@@ -25,6 +25,8 @@ Level 4 → Agent teams with self-healing CI and compliance auditors
 | **L4** | Autonomous system | Mature teams | + Specialized agents + Agent teams + Self-healing |
 
 Each level includes everything from the levels below it.
+
+> **Where do these levels come from?** This framework is a practical synthesis — not invented from scratch. It combines industry frameworks, published research, and hands-on experience building with these tools. See [Influences & Attribution](#influences--attribution) for the full picture.
 
 ## Quick Start
 
@@ -77,9 +79,7 @@ your-project/
 │   ├── product/                 ←      PRDs, vision, roadmap
 │   ├── architecture/            ←      ADRs (decision records)
 │   ├── specs/                   ←      Modular spec modules
-│   ├── runbooks/                ←      Deploy, debug, post-mortems
-│   ├── workflow.md              ←      Orchestration: who does what
-│   └── assets/                  ←      Diagrams and images
+│   └── runbooks/                ←      Deploy, debug, post-mortems
 ├── src/                         ←      Your code
 ├── memory/                      ← L4+  Long-term vector memory
 │   ├── index.py                 ←      Index project into vector DB
@@ -158,22 +158,6 @@ python memory/query.py "auth"       # Semantic search
 python memory/query.py --stats      # What's indexed
 ```
 
-## Who Does What
-
-Obsidian is the brain, Figma is the eye, Claude Code is the hand.
-
-![Workflow diagram](docs/assets/workflow-diagram.svg)
-
-| Question | Answer |
-|----------|--------|
-| Where do I start? | **Obsidian** — write what you want |
-| Who do I talk to? | **Claude Code** — it executes, but reads from Obsidian |
-| Where do I design? | **Figma Make** — prototypes and design system |
-| Where do I criticize? | **Obsidian** — reviews, post-mortems, next cycle |
-| What connects everything? | **Git** — same repo, everything versioned |
-
-See [docs/workflow.md](docs/workflow.md) for the full orchestration guide.
-
 ## Daily Workflow
 
 ```bash
@@ -201,6 +185,90 @@ cd your-project && claude
 **Figma** — Add Figma links to `CLAUDE.md`. Use the Figma MCP server for design-to-code.
 
 **GitHub** — Issue templates and CI workflow included.
+
+## Influences & Attribution
+
+The 4 maturity levels in this blueprint are a practical synthesis. They weren't invented in isolation — they combine industry frameworks, published research, and direct experience building products and technology with AI at the center.
+
+### What's original
+
+- The integration of **Obsidian + Claude Code + Figma Make** as a unified workflow
+- The specific mapping of Claude Code features (CLAUDE.md, skills, hooks, agent teams) to maturity levels
+- The `[SPEC]` convention and modular spec system
+- The blueprint structure itself — opinionated on where things go, flexible on what goes there
+
+### What came from the industry
+
+| Source | What it contributed | How it shaped the blueprint |
+|--------|--------------------|-----------------------------|
+| **Rushika Rai** — AI Agent vs Agentic AI framework | 5 technical maturity levels (Level 0→4) measuring what the agent can do alone | Inspired the level-based structure, but we reframed it: our levels measure how the *human* changes their way of working, not just the agent's capability |
+| **OpenAI — Harness Engineering** | The concept that engineers should design environments, constraints, and feedback loops — not write code. AGENTS.md as a map to deeper docs. Architectural guardrails as agent multipliers | Directly influenced L3 (hooks as automated gates) and the CLAUDE.md → docs/ structure. Our Obsidian vault is the equivalent of their structured `docs/` directory |
+| **DX Research — Q4/2025 Impact Report** | Data from 135k+ developers across 435 companies on AI adoption, time savings, and quality impact | Validated the progression: most teams are at L1 (copilot). Structured enablement is what moves teams forward, not just tool access |
+| **Steven Choi** | Execution vs judgment distinction. Data showing Staff Engineers gain disproportionately more from AI agents. The "agentic context problem" warning | Reinforced why L3 and L4 exist: without governance and memory, L2 generates invisible tech debt at scale |
+| **Anthropic — Claude Code architecture** | Skills, hooks, agent teams, CLAUDE.md convention, context compaction | The 4 levels map directly to Claude Code's feature progression: CLAUDE.md (L1) → skills + commands (L2) → hooks (L3) → agent teams + memory (L4) |
+| **Mitchell Hashimoto** | The "harness" metaphor — every time an agent makes a mistake, engineer a solution so it never happens again | Shaped the L3 philosophy: hooks and gates aren't bureaucracy, they're compounding improvements |
+| **Ruben Hassid** | Playbook for team adoption of Claude in 5 days using Projects and shared context | Informed how we think about L1→L2 transition for teams: adoption is an enablement problem, not a technology problem |
+
+### The synthesis
+
+The key insight that ties it all together: **most frameworks measure what AI can do. This one measures what humans need to change.** An autonomous agent (L4) without the right human governance is just a faster way to generate tech debt. The levels exist to ensure that as AI capability increases, human oversight and context-keeping scale with it.
+
+This is a living framework. As tools evolve and the community contributes, the levels will too. If you've found patterns that should be here, open an issue or PR.
+
+## Recommended Learning
+
+This blueprint gives you the structure, but you need the fundamentals to use it well. All links below come directly from Anthropic's official documentation.
+
+### Start here (all levels)
+
+| What | Link | Why |
+|------|------|-----|
+| Claude Code overview | [code.claude.com/docs/en/overview](https://code.claude.com/docs/en/overview) | Understand what Claude Code is and choose your environment (CLI, VS Code, Desktop, Web) |
+| Quickstart | [code.claude.com/docs/en/quickstart](https://code.claude.com/docs/en/quickstart) | Walk through your first real task: explore a codebase, make changes, commit |
+| Best practices | [code.claude.com/docs/en/best-practices](https://code.claude.com/docs/en/best-practices) | Patterns that work, anti-patterns that don't. Read this before writing your first CLAUDE.md |
+
+### Level 1 — Copilot
+
+| What | Link | Why |
+|------|------|-----|
+| CLAUDE.md and memory | [code.claude.com/docs/en/memory](https://code.claude.com/docs/en/memory) | How to give Claude persistent instructions. The foundation of everything else |
+| Common workflows | [code.claude.com/docs/en/common-workflows](https://code.claude.com/docs/en/common-workflows) | Plan mode, auto-accept, /compact, commit patterns |
+| Settings | [code.claude.com/docs/en/settings](https://code.claude.com/docs/en/settings) | Permissions, safety, environment variables |
+
+### Level 2 — Planner + Executor
+
+| What | Link | Why |
+|------|------|-----|
+| Skills | [code.claude.com/docs/en/skills](https://code.claude.com/docs/en/skills) | Auto-invoked knowledge packs. How to create, trigger, and scope them |
+| Extend Claude Code | [code.claude.com/docs/en/features-overview](https://code.claude.com/docs/en/features-overview) | Map of all extension points: skills, subagents, hooks, MCP, plugins. Know when to use what |
+| MCP servers | [code.claude.com/docs/en/mcp](https://code.claude.com/docs/en/mcp) | Connect Claude to external tools (Figma, GitHub, databases). Essential for the Figma Make flow |
+
+### Level 3 — Governance + Quality
+
+| What | Link | Why |
+|------|------|-----|
+| Hooks guide | [code.claude.com/docs/en/hooks-guide](https://code.claude.com/docs/en/hooks-guide) | Automate gates: lint on write, security check on bash, audit on completion |
+| Hooks reference | [code.claude.com/docs/en/hooks](https://code.claude.com/docs/en/hooks) | Full event schemas, JSON input/output, PreToolUse decision control |
+| Plugins | [code.claude.com/docs/en/plugins](https://code.claude.com/docs/en/plugins) | Package skills + hooks + agents into shareable, installable units |
+
+### Level 4 — Autonomous System
+
+| What | Link | Why |
+|------|------|-----|
+| Subagents | [code.claude.com/docs/en/sub-agents](https://code.claude.com/docs/en/sub-agents) | Create specialized agents with custom prompts, tools, permissions, and persistent memory |
+| Agent teams | [code.claude.com/docs/en/agent-teams](https://code.claude.com/docs/en/agent-teams) | Multi-agent coordination: lead + teammates, shared tasks, peer-to-peer messaging. Requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` |
+| Claude Code SDK | [code.claude.com/docs/en/sdk](https://code.claude.com/docs/en/sdk) | Run Claude Code programmatically for CI/CD, automation, and custom orchestration |
+| L4 Setup Guide | [docs/l4-setup-guide.md](docs/l4-setup-guide.md) | Step-by-step setup for Agent Teams, memory, and L4 hooks in this blueprint |
+
+### Going deeper
+
+| What | Link | Why |
+|------|------|-----|
+| How Claude Code works | [code.claude.com/docs/en/how-it-works](https://code.claude.com/docs/en/how-it-works) | Understand the agentic loop under the hood |
+| Claude Code changelog | [code.claude.com/docs/en/changelog](https://code.claude.com/docs/en/changelog) | Stay current. Features evolve fast |
+| Anthropic Academy | [docs.claude.com/en/docs/anthropic-academy](https://docs.claude.com/en/docs/anthropic-academy) | Free interactive courses from Anthropic |
+
+> **Note:** Claude Code evolves fast. These links were verified against Claude Code v2.1.79 (March 2026). If a link breaks, check the [Claude Code docs homepage](https://code.claude.com/docs/en/overview) for the updated path.
 
 ## Contributing
 
